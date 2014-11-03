@@ -1,8 +1,13 @@
+
 (function() {
     "use strict";
     /*global window,document,Float32Array,Uint16Array,mat4,vec3,snoise*/
     /*global getShaderSource,createWebGLContext,createProgram*/
-
+	
+	var FPS=0;
+	var ticks=0;
+	var lastFPS=0;
+	
     function sphericalToCartesian( r, a, e ) {
         var x = r * Math.cos(e) * Math.cos(a);
         var y = r * Math.sin(e);
@@ -476,6 +481,15 @@
         time += 0.001;
 		
         window.requestAnimFrame(animate);
+		
+		var now=Date.now();
+		if(now-lastFPS>=1000){
+			lastFPS=now;
+			FPS=ticks;
+			ticks=0;
+			document.getElementById("FPS").innerHTML=FPS;
+		}
+		ticks++;
     }
 
     var textureCount = 0;
