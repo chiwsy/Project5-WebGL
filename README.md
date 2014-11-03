@@ -29,7 +29,7 @@ Here are some result:
 
 [Play a sinc wave](https://rawgit.com/chiwsy/Project5-WebGL/master/vert_wave_sinc.html)
 
-[Play earth](https://cdn.rawgit.com/chiwsy/Project5-WebGL/master/frag_globe.html)
+[Play earth(Require FireFox on windows)](https://cdn.rawgit.com/chiwsy/Project5-WebGL/master/frag_globe.html)
 
 ![sine wave](resources/wave.gif)
 ![Sinc wave](resources/sincwave.gif)
