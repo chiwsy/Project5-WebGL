@@ -27,7 +27,7 @@
       // NOTE : according to the WebGL standard, 0.0f is not accepted
 		float s_contrib=sin(position.x*2.0*3.14159+u_time);
 		float t_contrib=sin(position.y*2.0*3.14159+u_time);
-		float dis=length(vec2(position.x*2.0*3.14159+u_time,position.y*2.0*3.14159+u_time));
+		float dis=length(vec2((position.x-.5)*2.0*3.14159+u_time,(position.y-.5)*2.0*3.14159+u_time));
 		float height = abs(dis)>0.000001?(s_contrib*t_contrib/dis):1.0;
 		
 	

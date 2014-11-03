@@ -437,10 +437,11 @@
         gl.uniform1i(u_EarthSpecLocation, 5);
 		
 		gl.drawElements(gl.TRIANGLES, numberOfIndices, gl.UNSIGNED_SHORT,0);
-
+		gl.uniform1f(u_timeLocation,time);
+		
         gl.disableVertexAttribArray(positionLocation);
         gl.disableVertexAttribArray(normalLocation);
-        gl.disableVertexAttribArray(texCoordLocation);
+        //gl.disableVertexAttribArray(texCoordLocation);
 		
 		//skybox
 		mat4.scale(model, vec3.create([50.0,50.0,50.0]));
@@ -473,7 +474,7 @@
         gl.disableVertexAttribArray(skypositionLocation);   
 		
         time += 0.001;
-		gl.uniform1f(u_timeLocation,time);
+		
         window.requestAnimFrame(animate);
     }
 
@@ -523,12 +524,12 @@
     }
 
     //front back up down right left
-    skyboxfaces[0] = [gl.TEXTURE_CUBE_MAP_POSITIVE_X, "assets/sky512.jpg"];
-    skyboxfaces[1] = [gl.TEXTURE_CUBE_MAP_NEGATIVE_X, "assets/sky512.jpg"];
-    skyboxfaces[2] = [gl.TEXTURE_CUBE_MAP_POSITIVE_Y, "assets/sky512.jpg"];
-    skyboxfaces[3] = [gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, "assets/sky512.jpg"];
-    skyboxfaces[4] = [gl.TEXTURE_CUBE_MAP_POSITIVE_Z, "assets/sky512.jpg"];
-    skyboxfaces[5] = [gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, "assets/sky512.jpg"];
+    skyboxfaces[0] = [gl.TEXTURE_CUBE_MAP_POSITIVE_X, "assets/rightImage.png"];
+    skyboxfaces[1] = [gl.TEXTURE_CUBE_MAP_NEGATIVE_X, "assets/leftImage.png"];
+    skyboxfaces[2] = [gl.TEXTURE_CUBE_MAP_POSITIVE_Y, "assets/upImage.png"];
+    skyboxfaces[3] = [gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, "assets/downImage.png"];
+    skyboxfaces[4] = [gl.TEXTURE_CUBE_MAP_POSITIVE_Z, "assets/backImage.png"];
+    skyboxfaces[5] = [gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, "assets/frontImage.png"];
 
     loadCubeTextrue(skyboxTex, skyboxfaces);
 
