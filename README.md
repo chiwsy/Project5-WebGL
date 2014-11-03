@@ -24,6 +24,7 @@ In this project, I implemented a simple sine wave and one Sinc function wave in 
 In the second part of this project, a digital global is inplemented.
 
 Here are some result:
+
 [Play a sine wave](https://rawgit.com/chiwsy/Project5-WebGL/master/vert_wave.html)
 
 [Play a sinc wave](https://rawgit.com/chiwsy/Project5-WebGL/master/vert_wave_sinc.html)
