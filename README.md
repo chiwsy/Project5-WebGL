@@ -20,19 +20,16 @@ have issues with Chrome on windows, but Firefox seems to run it fine.
 -------------------------------------------------------------------------------
 INTRODUCTION:
 -------------------------------------------------------------------------------
-In this project, you will get introduced to the world of GLSL in two parts: 
-vertex shading and fragment shading. The first part of this project is the 
-Image Processor, and the second part of this project is a Wave Vertex Shader.
+In this project, I implemented a simple sine wave and one Sinc function wave in 3D space. 
 
-In the first part of this project, you will implement a GLSL vertex shader as 
-part of a WebGL demo. You will create a dynamic wave animation using code that 
-runs entirely on the GPU.
+In the second part of this project, a digital global is inplemented.
 
-In the second part of this project, you will implement a GLSL fragment shader
-to render an interactive globe in WebGL. This will include texture blending,
-bump mapping, specular masking, and adding a cloud layer to give your globe a 
-uniquie feel.
+Here are some result:
 
+![sine wave](resources/wave.gif)
+![Sinc wave](resources/sincwave.gif)
+![Global Skybox view](resources/global.gif)
+![Global earth view](resources/global2.gif)
 -------------------------------------------------------------------------------
 CONTENTS:
 -------------------------------------------------------------------------------
