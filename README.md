@@ -24,7 +24,9 @@ In this project, I implemented a simple sine wave and one Sinc function wave in 
 In the second part of this project, a digital global is inplemented.
 
 Here are some result:
-
+[Play a sine wave](https://rawgit.com/chiwsy/Project5-WebGL/master/vert_wave.html)
+[Play a sinc wave](https://rawgit.com/chiwsy/Project5-WebGL/master/vert_wave_sinc.html)
+[Play earth not working unknow reason :(](https://rawgit.com/chiwsy/Project5-WebGL/master/frag_globe.html)
 ![sine wave](resources/wave.gif)
 ![Sinc wave](resources/sincwave.gif)
 ![Global Skybox view](resources/global.gif)
