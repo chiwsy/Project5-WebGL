@@ -26,8 +26,9 @@
     {
       // NOTE : according to the WebGL standard, 0.0f is not accepted
 		float s_contrib=sin(position.x*2.0*3.14159+u_time);
-		float t_contrib=cos(position.y*2.0*3.14159+u_time);
-		float height = s_contrib*t_contrib;
+		float t_contrib=sin(position.y*2.0*3.14159+u_time);
+		float dis=length(vec2(position.x*2.0*3.14159+u_time,position.y*2.0*3.14159+u_time));
+		float height = abs(dis)>0.000001?(s_contrib*t_contrib/dis):1.0;
 		
 	
 		u_color=mix(lowClr,hghClr,(height+1.0)/2.0);
@@ -132,6 +133,8 @@
     var mvp = mat4.create();
     mat4.multiply(persp, mv, mvp);
 	u_time=u_time+0.01;
+	if(u_time>2.0*3.14159)
+		u_time-=3.14159*2.0;
     // Render  
     context.clear(context.COLOR_BUFFER_BIT | context.DEPTH_BUFFER_BIT);
 

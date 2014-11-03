@@ -55,7 +55,14 @@
     var u_EarthSpecLocation;
     var u_BumpLocation;
     var u_timeLocation;
+	
+	var u_texupLocation;
+	var u_texrtLocation;
+	
+	var u_SkyboxLocation;
+	
 
+	
     (function initializeShader() {
         var vs = getShaderSource(document.getElementById("vs"));
         var fs = getShaderSource(document.getElementById("fs"));
@@ -75,8 +82,12 @@
         u_EarthSpecLocation = gl.getUniformLocation(program,"u_EarthSpec");
         u_BumpLocation = gl.getUniformLocation(program,"u_Bump");
         u_timeLocation = gl.getUniformLocation(program,"u_time");
+		u_texupLocation=gl.getUniformLocation(program, "texupIntv");
+		u_texrtLocation=gl.getUniformLocation(program, "texrtIntv");
         u_CameraSpaceDirLightLocation = gl.getUniformLocation(program,"u_CameraSpaceDirLight");
-
+		
+		u_SkyboxLocation=gl.getUniformLocation(program,"u_SkyBox");
+		
         gl.useProgram(program);
     })();
 
@@ -86,7 +97,9 @@
     var transTex = gl.createTexture();
     var lightTex = gl.createTexture();
     var specTex  = gl.createTexture();
-
+	
+	var skyboxTex=gl.createTexture();
+	
     function initLoadedTexture(texture){
         gl.bindTexture(gl.TEXTURE_2D, texture);
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
@@ -131,7 +144,8 @@
 
         var WIDTH_DIVISIONS = NUM_WIDTH_PTS - 1;
         var HEIGHT_DIVISIONS = NUM_HEIGHT_PTS - 1;
-
+		gl.uniform1f(u_texrtLocation,1.0/WIDTH_DIVISIONS);
+		gl.uniform1f(u_texupLocation,1.0/HEIGHT_DIVISIONS);
         var numberOfPositions = NUM_WIDTH_PTS * NUM_HEIGHT_PTS;
 
         var positions = new Float32Array(3 * numberOfPositions);
@@ -286,9 +300,15 @@
         gl.activeTexture(gl.TEXTURE5);
         gl.bindTexture(gl.TEXTURE_2D, specTex);
         gl.uniform1i(u_EarthSpecLocation, 5);
+		//skybox
+		gl.activeTexture(gl.TEXTURE6);
+		gl.bindTexture(gl.TEXTURE_2D,skyboxTex);
+		gl.uniform1i(u_SkyboxLocation,6);
+		
         gl.drawElements(gl.TRIANGLES, numberOfIndices, gl.UNSIGNED_SHORT,0);
-
+		
         time += 0.001;
+		gl.uniform1f(u_timeLocation,time);
         window.requestAnimFrame(animate);
     }
 
@@ -300,7 +320,7 @@
             initLoadedTexture(texture);
 
             // Animate once textures load.
-            if (++textureCount === 6) {
+            if (++textureCount === 7) {
                 animate();
             }
         }
@@ -313,4 +333,5 @@
     initializeTexture(transTex, "assets/earthtrans1024.png");
     initializeTexture(lightTex, "assets/earthlight1024.png");
     initializeTexture(specTex, "assets/earthspec1024.png");
+	initializeTexture(skyboxTex,"assets/Skybox.jpg");
 }());
