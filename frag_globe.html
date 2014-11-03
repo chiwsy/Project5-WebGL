@@ -10,6 +10,31 @@
 <div id="message" style="position:absolute;top:100px"></div> <!-- Pixel offset to avoid FPS counter -->
 <canvas id="canvas" style="border: none;" width="1024" height="768" tabindex="1"></canvas>
 
+<script id="skyboxvs" type="x-shader/x-vertex">
+    uniform mat4 u_Model;
+    uniform mat4 u_View;
+    uniform mat4 u_Persp;
+    uniform mat4 u_InvTrans;
+    attribute vec3 Position;
+    //attribute vec2 Texcoord;
+     
+    varying vec3 v_Texcoord;
+    varying vec3 v_Position;
+    void main() {
+        gl_Position =  u_Persp * u_View * u_Model * vec4(Position, 1.0);
+        v_Texcoord = Position;
+    }
+</script>
+
+<script id="skyboxfs" type="x-shader/x-fragment">
+   precision highp float;
+   varying vec3 v_Texcoord;
+   uniform samplerCube u_Skybox;    
+     
+    void main (void) {
+        gl_FragColor = textureCube(u_Skybox, v_Texcoord);   
+    }
+</script>
 
 <script id="vs" type="x-shader/x-vertex">
     precision highp float;
