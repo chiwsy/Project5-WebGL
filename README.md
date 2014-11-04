@@ -95,5 +95,5 @@ Here are some interesting results and I marked some features to high light what 
 PERFORMANCE EVALUATION
 -------------------------------------------------------------------------------
 This global system seems a very low weight. I have turn on and off skybox, bump map, specular, cloud, etc. But the FPS is always 59~61. 
-
+I even tested on my Nexus 5 and the FPS is 60.
 
